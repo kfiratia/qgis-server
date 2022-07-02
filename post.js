@@ -29,6 +29,6 @@ app.get('/api', (req, res) => {
     res.send(graves)
   });
 
-app.listen(8000, () => {
+app.listen(process.env.PORT  || 8000, () => {
     console.log('app listening on port 8000!')
-  });
+  });  
