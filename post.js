@@ -5,20 +5,20 @@ const fs = require("fs");
 const { parse } = require("csv-parse");
 app.use(cors());
 
-// graves = []
+graves = []
 
-// fs.createReadStream("./rabbis_dataframe_with_coor.csv")
-//   .pipe(parse({ delimiter: ",", from_line: 2 }))
-//   .on("data", function (row) {
-//     graves.push({
-//         "name": row[1],
-//         "description": row[2],
-//         "district": row[3],
-//         "city": row[4],
-//         "latitude" : row[6],
-//         "longitude" : row[7]
-//     })
-//   })
+fs.createReadStream("./rabbis_dataframe_with_coor.csv")
+  .pipe(parse({ delimiter: ",", from_line: 2 }))
+  .on("data", function (row) {
+    graves.push({
+        "name": row[1],
+        "description": row[2],
+        "district": row[3],
+        "city": row[4],
+        "latitude" : row[6],
+        "longitude" : row[7]
+    })
+  })
 
 
 // var data = require("fs").readFileSync("rabbis_dataframe_coor.CSV", "utf8")
@@ -26,7 +26,7 @@ app.use(cors());
 // console.log(data["name"]);
 
 app.get('/api', (req, res) => {
-    res.send({"hiii":"hott"})
+    res.send(graves)
   });
 
 app.listen(process.env.PORT  || 8000, () => {
