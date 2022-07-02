@@ -26,7 +26,7 @@ app.use(cors());
 // console.log(data["name"]);
 
 app.get('/api', (req, res) => {
-    res.send({"hiii":"hot"})
+    res.send({"hiii":"hott"})
   });
 
 app.listen(process.env.PORT  || 8000, () => {
