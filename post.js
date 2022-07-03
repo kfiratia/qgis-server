@@ -49,7 +49,7 @@ client.connect();
 
 client.query('SELECT * FROM table_name',(err, res)=>{
     if(!err){
-        console.log(res.rows);
+        console.log(res.rows[0]["latitude"]);
         x = res.rows
     }else{
         console.log(err.message);
