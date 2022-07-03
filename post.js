@@ -15,6 +15,7 @@ fs.createReadStream("./rabbis_dataframe_with_coor.csv")
         "description": row[2],
         "district": row[3],
         "city": row[4],
+        "direction":row[5],
         "latitude" : row[6],
         "longitude" : row[7]
     })
