@@ -1,4 +1,4 @@
-var map = L.map('map').setView([32.938397, 35.34147], 10);
+var map = L.map('map').setView([32.938397, 35.34147], 12);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -18,6 +18,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //     <a href="https://www.waze.com/ul?ll=${element["latitude"]}%2C${element["longitude"]}&navigate=yes&zoom=16"  style="text-align: right;">נווט</a>`);
 // });
 
+var graveIcon = L.icon({
+    iconUrl: 'https://icon-library.com/images/history-icon/history-icon-7.jpg',
+    iconSize:     [30, 30], // size of the icon
+});
+
+
 const api_url = "https://doron-qgis.herokuapp.com/api"
 // Adding the entire table to the body tag
 
@@ -30,7 +36,7 @@ const response = await fetch(url);
 var graves = await response.json();
 console.log(graves);
 graves.forEach(element => {
-    var marker = L.marker([element["latitude"], element["longitude"]]).addTo(map);
+    var marker = L.marker([element["latitude"], element["longitude"]], {icon: graveIcon}).addTo(map);
     marker.bindPopup(`<h1 style="text-align: right;">${element["name"]}</h1>
     <h2 style="text-align: right;">${element["city"]}<h2>
     <h3 style="text-align: right;">${element["district"]}<h3>
